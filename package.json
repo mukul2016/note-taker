@@ -1,0 +1,26 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "Note taking app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mukul Sharma",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mukul2016/note-taker.git"
+  },
+  "keywords": [
+    "note",
+    "taker"
+  ],
+  "bugs": {
+    "url": "https://github.com/mukul2016/note-taker/issues"
+  },
+  "homepage": "https://github.com/mukul2016/note-taker#readme"
+}
