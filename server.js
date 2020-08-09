@@ -1,6 +1,7 @@
 // Dependencies
 // ===========================================================
 const express = require('express')
+const app = express()
 const path = require('path')
 const fs = require('fs')
 const PORT = process.env.PORT || 3001
@@ -57,13 +58,25 @@ app.post('/api/notes', function (req, res) {
 
 app.delete('/api/notes/:id', function (req, res) {
   const deleteId = req.params.id
+  console.log('id', deleteId)
   fs.readFile('db/db.json', 'utf8', function (error, response) {
     if (error) {
       console.log(error)
     }
-    let note = JSON.parse(response)
-    // console.log(note)
-    if (deleteId <= note.length) {
+    let notes = JSON.parse(response)
+    console.log(notes)
+    notes = notes.filter(note => note.id != deleteId)
+    console.log(notes)
+    fs.writeFile('db.json', JSON.stringify(notes, null, 2), function (err) {
+      if (err) {
+        return res.json(err)
+      }
+
+      res.json(notes)
+    })
+    /*else {
+      res.json(false)*/
+    /* if (deleteId <= notes.length) {
       res.json(note.splice(deleteId - 1, 1))
       // Reassign ids to notes
       for (let i = 0; i < note.length; i++) {
@@ -74,7 +87,7 @@ app.delete('/api/notes/:id', function (req, res) {
       })
     } else {
       res.json(false)
-    }
+    }*/
   })
 })
 
