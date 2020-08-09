@@ -3,9 +3,7 @@
 const express = require('express')
 const path = require('path')
 const fs = require('fs')
-
-const app = express()
-const PORT = 3001
+const PORT = process.env.PORT || 3001
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }))
@@ -36,7 +34,7 @@ app.post('/api/notes', function (req, res) {
       console.log(error)
     }
     const note = JSON.parse(response)
-    console.log(note)
+    // console.log(note)
     const noteRequest = req.body
     const newNoteId = note.length + 1
     const newNote = {
@@ -46,7 +44,7 @@ app.post('/api/notes', function (req, res) {
     }
     note.push(newNote)
     res.json(newNote)
-    console.log(note)
+    // console.log(note)
     fs.writeFile(
       path.join(__dirname, 'db/db.json'),
       JSON.stringify(note, null, 2),
@@ -64,7 +62,7 @@ app.delete('/api/notes/:id', function (req, res) {
       console.log(error)
     }
     let note = JSON.parse(response)
-    console.log(note)
+    // console.log(note)
     if (deleteId <= note.length) {
       res.json(note.splice(deleteId - 1, 1))
       // Reassign ids to notes
