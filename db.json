@@ -2,6 +2,26 @@
   {
     "title": "Test Title",
     "text": "Test text",
-    "id": 1
+    "id": "test_id"
   },
+  {
+    "id": 2,
+    "title": "my note",
+    "text": "finish tutorial"
+  },
+  {
+    "id": 3,
+    "title": "my notes",
+    "text": "finish tutorial"
+  },
+  {
+    "id": 4,
+    "title": "MS note",
+    "text": "Get groceries"
+  },
+  {
+    "id": 5,
+    "title": "another note",
+    "text": "push project to git"
+  }
 ]
